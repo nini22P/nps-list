@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  html {
+    color-scheme: dark;
+  }
+}
+
+html {
+  @apply bg-cyan-800 h-screen overflow-hidden;
+}
+
+.container {
+  @apply max-w-3xl m-auto;
+}
