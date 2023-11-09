@@ -39,7 +39,7 @@ const ALL_CONTENTS = computed(() => {
 
 const filterBySearchKeywords = (contents: any[]) => contents
   .filter(content => [content['Content ID'], content.Name, content['Original Name'], content['Title ID']]
-    .some(item => item?.includes(FILTER_KEYWORDS.value.searchKeywords)))
+    .some(item => item?.toLowerCase().includes(FILTER_KEYWORDS.value.searchKeywords.toLowerCase())))
 
 const filterByRegion = (contents: any[]) => contents
   .filter(content => FILTER_KEYWORDS.value.region?.some(region => content.Region?.includes(region)))
@@ -61,7 +61,8 @@ const copyZRIF = (zRIF: string) => navigator.clipboard.writeText(zRIF)
     <div v-for="(content, index) in contents" :key="index" class="item">
       <div class="content-left">
         <div class="top-info">
-          <span class="region">{{ content.Region }}</span>
+          <span class="spon">{{ content.Region }}</span>
+          <span class="spon" v-if="content['Update Version']">{{ content['Update Version'] }}</span>
           <span class="text-sm"> {{ content['Title ID'] }} </span>
         </div>
         <span> {{ content.Name }}</span>
@@ -101,7 +102,7 @@ const copyZRIF = (zRIF: string) => navigator.clipboard.writeText(zRIF)
   @apply flex flex-row justify-center items-center gap-2 text-sm;
 }
 
-.region {
+.spon {
   @apply bg-teal-600 rounded text-center block w-12;
 }
 

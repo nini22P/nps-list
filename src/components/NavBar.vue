@@ -27,7 +27,7 @@ nav a {
 }
 
 nav :hover {
-  @apply bg-cyan-700 text-slate-100 drop-shadow-md;
+  @apply bg-cyan-700 text-slate-100;
 }
 
 nav :first-child {
