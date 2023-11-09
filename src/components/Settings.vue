@@ -2,7 +2,6 @@
 <script setup lang='ts'>
 import Papa from 'papaparse'
 import { useDataStore, type Game, type Update, type DLC, type Theme } from '../stores/data'
-import Settings from '@/components/Settings.vue';
 
 type FileType = 'PSV_GAMES' | 'PSV_UPDATES' | 'PSV_DLCS' | 'PSV_THEMES' | 'PSV_DEMOS'
 

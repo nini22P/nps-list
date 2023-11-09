@@ -6,6 +6,4 @@ export const fileSizeConv = (fileSize: number) => {
 
 export const getFileSize = (fileSize: string) => Number(fileSize) ? fileSizeConv(Number(fileSize)) : null
 
-export const canDownload = (PKGDirectLink: string) => (/^http.*/.test(PKGDirectLink))
-
-export const timeConv = (lastModificationDate: string) => Number(lastModificationDate.replace(/[/ :]/g, ''))
+export const timeConv = (lastModificationDate: string) => Number(lastModificationDate.replace(/[/ :-]/g, ''))

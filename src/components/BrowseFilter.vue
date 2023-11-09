@@ -76,7 +76,7 @@ select {
 }
 
 .checkboxs {
-  @apply flex gap-2;
+  @apply flex gap-2 select-none;
 }
 
 .checkboxs input,
