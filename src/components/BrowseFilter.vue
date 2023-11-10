@@ -14,26 +14,26 @@ const { FILTER_KEYWORDS } = storeToRefs(store)
         <input type="text" class="search" v-model="FILTER_KEYWORDS.searchKeywords">
 
         <select v-model="FILTER_KEYWORDS.sortBy">
-          <option value="Date">日期</option>
-          <option value="Name">名称</option>
+          <option value="Date">{{ $t('common.date') }}</option>
+          <option value="Name">{{ $t('common.title') }}</option>
         </select>
       </div>
 
       <div class="checkboxs">
         <input type="checkbox" id="filter-game" value="Game" v-model="FILTER_KEYWORDS.contentType">
-        <label for="filter-game">游戏</label>
+        <label for="filter-game">{{ $tc('type.games') }}</label>
 
         <input type="checkbox" id="filter-update" value="Update" v-model="FILTER_KEYWORDS.contentType">
-        <label for="filter-update">更新</label>
+        <label for="filter-update">{{ $tc('type.updates') }}</label>
 
         <input type="checkbox" id="filter-dlc" value="DLC" v-model="FILTER_KEYWORDS.contentType">
-        <label for="filter-dlc">DLC</label>
+        <label for="filter-dlc">{{ $tc('type.dlcs') }}</label>
 
         <input type="checkbox" id="filter-theme" value="Theme" v-model="FILTER_KEYWORDS.contentType">
-        <label for="filter-theme">主题</label>
+        <label for="filter-theme">{{ $tc('type.themes') }}</label>
 
         <input type="checkbox" id="filter-demo" value="Demo" v-model="FILTER_KEYWORDS.contentType">
-        <label for="filter-demo">DEMO</label>
+        <label for="filter-demo">{{ $tc('type.demos') }}</label>
       </div>
       <div class="checkboxs">
         <input type="checkbox" id="asia" value="ASIA" v-model="FILTER_KEYWORDS.region">

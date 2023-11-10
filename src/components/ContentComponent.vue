@@ -37,8 +37,9 @@ const copyZRIF = (zRIF: string) => navigator.clipboard.writeText(zRIF)
     </div>
     <div class="content-right">
       <div class="buttons">
-        <button v-if="canDownload(content['PKG direct link'])" @click="download(content['PKG direct link'])">下载</button>
-        <button v-if=(hasZRIF(content)) @click="copyZRIF(content.zRIF)">复制zRIF</button>
+        <button v-if="canDownload(content['PKG direct link'])" @click="download(content['PKG direct link'])">{{
+          $t('common.download') }}</button>
+        <button v-if=(hasZRIF(content)) @click="copyZRIF(content.zRIF)">{{ $t('common.copy') }} zRIF</button>
       </div>
       <p class=" extra-info">
         <span>{{ getFileSize(content['File Size']) }}</span>

@@ -53,8 +53,6 @@ export interface Theme {
   'Required FW': string,
 }
 
-
-
 export const useDataStore = defineStore(
   'data',
   () => {
@@ -69,8 +67,6 @@ export const useDataStore = defineStore(
     const setPSVDLCs = (dlcs: DLC[]) => PSV_DLCS.value = { updateTime: (new Date()).toISOString(), data: dlcs }
     const setPSVThemes = (themes: Theme[]) => PSV_THEMES.value = { updateTime: (new Date()).toISOString(), data: themes }
     const setPSVDemos = (demos: Game[]) => PSV_DEMOS.value = { updateTime: (new Date()).toISOString(), data: demos }
-
-
 
     return {
       PSV_GAMES,
