@@ -6,15 +6,13 @@ import NavBar from './components/NavBar.vue'
 <template>
   <NavBar />
   <div class="route">
-    <div class="container">
-      <RouterView />
-    </div>
+    <RouterView />
   </div>
 </template>
 
 <style scoped>
 .route {
-  height: calc(100vh - 3.5rem);
-  @apply overflow-auto mt-14 pt-4 pb-8;
+  @apply w-screen;
+  padding-top: 4rem;
 }
 </style>

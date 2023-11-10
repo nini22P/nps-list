@@ -29,7 +29,7 @@ const copyZRIF = (zRIF: string) => navigator.clipboard.writeText(zRIF)
   <div class="item">
     <div class="content-left">
       <div class="top-info">
-        <span class="spon">{{ content.Region }}</span>
+        <span class="spon">{{ content?.Region }}</span>
         <span class="spon" v-if="hasUpdate(content)">{{ content['Update Version'] }}</span>
         <span class="text-sm"> {{ content['Title ID'] }} </span>
       </div>
@@ -50,7 +50,7 @@ const copyZRIF = (zRIF: string) => navigator.clipboard.writeText(zRIF)
 
 <style scoped>
 .item {
-  @apply bg-cyan-800 p-2 flex gap-2 justify-between items-center;
+  @apply bg-cyan-800 flex gap-2 justify-between items-center;
 }
 
 .content-left {

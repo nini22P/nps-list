@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useDataStore } from '@/stores/data'
+import { useDataStore, type DLC, type Game, type Theme, type Update } from '@/stores/data'
 import { computed } from 'vue'
 import { timeConv } from '../utils'
 import { useFilterStore } from '../stores/filter'
@@ -13,23 +13,23 @@ const { PSV_GAMES, PSV_UPDATES, PSV_DLCS, PSV_THEMES, PSV_DEMOS } = storeToRefs(
 const { FILTER_KEYWORDS } = storeToRefs(filterStore)
 
 const ALL_CONTENTS = computed(() => {
-  let contents: any[] = []
+  let contents: Game[] | Update[] | DLC[] | Theme[] = []
   FILTER_KEYWORDS.value.contentType?.map(type => {
     switch (type) {
       case 'Game':
-        contents = contents.concat(PSV_GAMES.value.data)
+        contents = contents.concat(PSV_GAMES.value.data) as Game[] | Update[] | DLC[] | Theme[]
         break
       case 'Update':
-        contents = contents.concat(PSV_UPDATES.value.data)
+        contents = contents.concat(PSV_UPDATES.value.data.map(item => { return { 'Content ID': item['Title ID'], ...item } })) as Game[] | Update[] | DLC[] | Theme[]
         break
       case 'DLC':
-        contents = contents.concat(PSV_DLCS.value.data)
+        contents = contents.concat(PSV_DLCS.value.data) as Game[] | Update[] | DLC[] | Theme[]
         break
       case 'Theme':
-        contents = contents.concat(PSV_THEMES.value.data)
+        contents = contents.concat(PSV_THEMES.value.data) as Game[] | Update[] | DLC[] | Theme[]
         break
       case 'Demo':
-        contents = contents.concat(PSV_DEMOS.value.data)
+        contents = contents.concat(PSV_DEMOS.value.data) as Game[] | Update[] | DLC[] | Theme[]
         break
       default:
         break
@@ -49,13 +49,22 @@ const sortContents = (contents: any[]) => (FILTER_KEYWORDS.value.sortBy === 'Dat
   ? contents.sort((a, b) => timeConv(b['Last Modification Date']) - timeConv(a['Last Modification Date']))
   : contents.sort((a, b) => a.Name.localeCompare(b.Name, undefined, { numeric: true }))
 
-const contents = computed(() => sortContents(filterByRegion(filterBySearchKeywords(ALL_CONTENTS.value))))
+const items = computed(() => sortContents(filterByRegion(filterBySearchKeywords(ALL_CONTENTS.value))))
 </script>
 
 <template>
-  <div class="p-2">
-    <ContentComponent v-for="(content, index) in contents" :key="index" :content="content" />
-  </div>
+  <VirtualList class="list" :data-key="'Content ID'" :data-sources="items" :estimate-size="80"
+    :item-class="'list-item-dynamic'" ref="virtualList">
+    <template #default="{ source }">
+      <ContentComponent :content="source" class="max-w-3xl m-auto px-4 py-2" />
+    </template>
+  </VirtualList>
 </template>
 
-<style scoped></style>
+<style scoped>
+.list {
+  @apply pt-2;
+  height: calc(100vh - 10.75rem);
+  overflow-y: auto;
+}
+</style>

@@ -17,7 +17,3 @@
 html {
   @apply bg-cyan-800 h-screen overflow-hidden;
 }
-
-.container {
-  @apply max-w-3xl m-auto;
-}

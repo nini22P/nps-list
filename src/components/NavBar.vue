@@ -39,6 +39,6 @@ nav :last-child {
 }
 
 nav .active {
-  @apply bg-cyan-700 text-white shadow-md;
+  @apply bg-cyan-700 text-white shadow;
 }
 </style>

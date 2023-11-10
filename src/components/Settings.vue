@@ -47,30 +47,37 @@ const handleFileSelect = (event: Event, type: FileType) => {
 
 <template>
   <div class="settings">
-    <div>
-      <h2>PSV 游戏</h2>
-      <p>更新时间: {{ store.PSV_GAMES.updateTime.slice(0, 10) }}</p>
-      <input type="file" accept=".tsv,.csv" @change="handleFileSelect($event, 'PSV_GAMES')">
-    </div>
-    <div>
-      <h2>PSV 更新</h2>
-      <p>更新时间: {{ store.PSV_UPDATES.updateTime.slice(0, 10) }}</p>
-      <input type="file" accept=".tsv,.csv" @change="handleFileSelect($event, 'PSV_UPDATES')">
-    </div>
-    <div>
-      <h2>PSV DLC</h2>
-      <p>更新时间: {{ store.PSV_DLCS.updateTime.slice(0, 10) }}</p>
-      <input type="file" accept=".tsv,.csv" @change="handleFileSelect($event, 'PSV_DLCS')">
-    </div>
-    <div>
-      <h2>PSV 主题</h2>
-      <p>更新时间: {{ store.PSV_THEMES.updateTime.slice(0, 10) }}</p>
-      <input type="file" accept=".tsv,.csv" @change="handleFileSelect($event, 'PSV_THEMES')">
-    </div>
-    <div>
-      <h2>PSV DEMOS</h2>
-      <p>更新时间: {{ store.PSV_DEMOS.updateTime.slice(0, 10) }}</p>
-      <input type="file" accept=".tsv,.csv" @change="handleFileSelect($event, 'PSV_DEMOS')">
+    <p class="text-sm px-2">点击添加本地 tsv / csv 文件</p>
+    <div class="grid grid-cols-2 gap-2">
+      <input id="psv-games" type="file" accept=".tsv,.csv" @change="handleFileSelect($event, 'PSV_GAMES')">
+      <label for="psv-games">
+        <h2>PSV 游戏</h2>
+        <p class="text-sm text-stone-200">更新时间: {{ store.PSV_GAMES.updateTime.slice(0, 10) }}</p>
+      </label>
+
+      <input id="psv-updates" type="file" accept=".tsv,.csv" @change="handleFileSelect($event, 'PSV_UPDATES')">
+      <label for="psv-updates">
+        <h2>PSV 更新</h2>
+        <p class="text-sm text-stone-200">更新时间: {{ store.PSV_UPDATES.updateTime.slice(0, 10) }}</p>
+      </label>
+
+      <input id="psv-dlcs" type="file" accept=".tsv,.csv" @change="handleFileSelect($event, 'PSV_DLCS')">
+      <label for="psv-dlcs">
+        <h2>PSV DLC</h2>
+        <p class="text-sm text-stone-200">更新时间: {{ store.PSV_DLCS.updateTime.slice(0, 10) }}</p>
+      </label>
+
+      <input id="psv-themes" type="file" accept=".tsv,.csv" @change="handleFileSelect($event, 'PSV_THEMES')">
+      <label for="psv-themes">
+        <h2>PSV 主题</h2>
+        <p class="text-sm text-stone-200">更新时间: {{ store.PSV_THEMES.updateTime.slice(0, 10) }}</p>
+      </label>
+
+      <input id="psv-demos" type="file" accept=".tsv,.csv" @change="handleFileSelect($event, 'PSV_DEMOS')">
+      <label for="psv-demos">
+        <h2>PSV DEMOS</h2>
+        <p class="text-sm text-stone-200">更新时间: {{ store.PSV_DEMOS.updateTime.slice(0, 10) }}</p>
+      </label>
     </div>
   </div>
 </template>
@@ -80,7 +87,11 @@ const handleFileSelect = (event: Event, type: FileType) => {
   @apply px-4 space-y-2;
 }
 
-.settings div {
-  @apply bg-cyan-900 p-2 rounded-md;
+input[type="file"] {
+  display: none;
+}
+
+input[type="file"]+label {
+  @apply block cursor-pointer bg-cyan-900 p-2 rounded-md shadow;
 }
 </style>
