@@ -3,7 +3,7 @@
   "short_name": "NPS List",
   "start_url": ".",
   "display": "standalone",
-  "description": "NoPaySation web client",
+  "description": "NoPayStation web client",
   "dir": "auto",
   "orientation": "any",
   "icons": [
