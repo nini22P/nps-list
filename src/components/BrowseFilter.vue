@@ -16,7 +16,7 @@ const { FILTER_KEYWORDS } = storeToRefs(store)
 
       <div class="flex flex-row gap-2 justify-between">
 
-        <div class="flex flex-col gap-1">
+        <div class="flex flex-col gap-2">
           <div class="checkboxs">
             <input type="checkbox" id="filter-game" value="Game" v-model="FILTER_KEYWORDS.contentType">
             <label for="filter-game">{{ $tc('type.games') }}</label>
@@ -82,7 +82,7 @@ const { FILTER_KEYWORDS } = storeToRefs(store)
 }
 
 select {
-  @apply rounded;
+  @apply rounded p-1;
 }
 
 .checkboxs {
