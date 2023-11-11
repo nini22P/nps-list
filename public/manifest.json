@@ -3,9 +3,11 @@
   "short_name": "NPS List",
   "start_url": ".",
   "display": "standalone",
-  "description": "NoPayStation web client",
+  "description": "NoPayStation web app",
   "dir": "auto",
   "orientation": "any",
+  "theme_color": "#155e75",
+  "background_color": "#155e75",
   "icons": [
     {
       "src": "./favicon.ico",

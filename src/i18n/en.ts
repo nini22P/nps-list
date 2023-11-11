@@ -4,6 +4,7 @@ export const en = {
     title: 'TITLE',
     download: 'Download',
     copy: 'Copy',
+    sort: 'Sort',
   },
   nav: {
     browse: 'BROWSE',

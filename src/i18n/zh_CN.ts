@@ -4,6 +4,7 @@ export const zh_CN = {
     title: '标题',
     download: '下载',
     copy: '复制',
+    sort: '排序',
   },
   nav: {
     browse: '浏览',
