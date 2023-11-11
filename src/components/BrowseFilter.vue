@@ -54,8 +54,8 @@ const { FILTER_KEYWORDS } = storeToRefs(store)
           </div>
         </div>
 
-        <div class="flex flex-col justify-around">
-          <p class="px-1.5 text-sm text-right">{{ $t('common.sort') }}</p>
+        <div class="flex flex-col justify-between">
+          <p class="px-1.5 text-sm text-right p-1">{{ $t('common.sort') }}</p>
           <select v-model="FILTER_KEYWORDS.sortBy">
             <option value="Date">{{ $t('common.date') }}</option>
             <option value="Name">{{ $t('common.title') }}</option>
