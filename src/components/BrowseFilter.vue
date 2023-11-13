@@ -10,14 +10,12 @@ const { FILTER_KEYWORDS } = storeToRefs(store)
 <template>
   <div class="border-b border-teal-900">
     <div class="filter-box">
-      <div class="serach-box">
-        <input type="text" class="search" v-model="FILTER_KEYWORDS.searchKeywords">
-      </div>
+      <input type="search" class="search" v-model="FILTER_KEYWORDS.searchKeywords">
 
       <div class="flex flex-row gap-2 justify-between">
 
         <div class="flex flex-col gap-2">
-          <div class="checkboxs">
+          <div class="flex gap-2 select-none">
             <input type="checkbox" id="filter-game" value="Game" v-model="FILTER_KEYWORDS.contentType">
             <label for="filter-game">{{ $tc('type.games') }}</label>
 
@@ -33,7 +31,7 @@ const { FILTER_KEYWORDS } = storeToRefs(store)
             <input type="checkbox" id="filter-demo" value="Demo" v-model="FILTER_KEYWORDS.contentType">
             <label for="filter-demo">{{ $tc('type.demos') }}</label>
           </div>
-          <div class="checkboxs">
+          <div class="flex gap-2 select-none">
             <input type="checkbox" id="asia" value="ASIA" v-model="FILTER_KEYWORDS.region">
             <label for="asia">ASIA</label>
 
@@ -73,20 +71,12 @@ const { FILTER_KEYWORDS } = storeToRefs(store)
   @apply px-4 pb-2 flex flex-col gap-2 max-w-3xl m-auto;
 }
 
-.serach-box {
-  @apply flex gap-1;
-}
-
 .search {
   @apply flex-auto px-2 py-1 rounded text-lg;
 }
 
 select {
   @apply rounded p-1;
-}
-
-.checkboxs {
-  @apply flex gap-2 select-none;
 }
 
 input[type="checkbox"] {

@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script setup lang='ts'>
 import Papa from 'papaparse'
-import { useDataStore, type Game, type Update, type DLC, type Theme } from '../stores/data'
+import { useDataStore, type Content } from '../stores/data'
 
 type FileType = 'PSV_GAMES' | 'PSV_UPDATES' | 'PSV_DLCS' | 'PSV_THEMES' | 'PSV_DEMOS'
 
@@ -17,23 +17,23 @@ const handleFileSelect = (event: Event, type: FileType) => {
       delimiter: '\t',
       quoteChar: '',
       header: true,
-      complete: (result: { data: Game[] | Update[] | DLC[] | Theme[] }) => {
+      complete: (result: { data: Content[] }) => {
         // console.log(result.data.map(z => z.Region).filter(y => y !== 'US' && y !== 'ASIA' && y !== 'JP' && y !== 'EU'))
         switch (type) {
           case 'PSV_GAMES':
-            store.setPSVGames(result.data as Game[])
+            store.setPSVGames(result.data)
             break
           case 'PSV_UPDATES':
-            store.setPSVUpdates(result.data as Update[])
+            store.setPSVUpdates(result.data)
             break
           case 'PSV_DLCS':
-            store.setPSVDLCs(result.data as DLC[])
+            store.setPSVDLCs(result.data)
             break
           case 'PSV_THEMES':
-            store.setPSVThemes(result.data as Theme[])
+            store.setPSVThemes(result.data)
             break
           case 'PSV_DEMOS':
-            store.setPSVDemos(result.data as Game[])
+            store.setPSVDemos(result.data)
             break
           default:
             console.log('type error')

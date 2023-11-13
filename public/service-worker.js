@@ -85,7 +85,7 @@
 
         // Update the cache with the version we fetched (only for ok status)
         event.waitUntil(
-        Promise.all([fetchedCopy, caches.open("pwa-cache")])
+        Promise.all([fetchedCopy, caches.open('pwa-cache')])
             .then(([response, cache]) => response.ok && cache.put(event.request, response))
             .catch(_ => { /* eat any errors */ })
         )
