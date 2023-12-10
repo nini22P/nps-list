@@ -44,9 +44,34 @@ const filterBySearchKeywords = (contents: Content[]) => contents
 const filterByRegion = (contents: Content[]) => contents
   .filter(content => FILTER_KEYWORDS.value.region?.some(region => content.Region?.includes(region)))
 
-const sortContents = (contents: Content[]) => (FILTER_KEYWORDS.value.sortBy === 'Date')
-  ? contents.sort((a, b) => timeConv(b['Last Modification Date']) - timeConv(a['Last Modification Date']))
-  : contents.sort((a, b) => a.Name.localeCompare(b.Name, undefined, { numeric: true }))
+const sortContents = (contents: Content[]) => {
+  switch (FILTER_KEYWORDS.value.sortBy) {
+    case 'Date':
+      return contents.sort((a, b) =>
+        FILTER_KEYWORDS.value.orderBy === 'ASC'
+          ? timeConv(a['Last Modification Date']) - timeConv(b['Last Modification Date'])
+          : timeConv(b['Last Modification Date']) - timeConv(a['Last Modification Date'])
+      )
+    case 'Name':
+      return contents.sort((a, b) =>
+        FILTER_KEYWORDS.value.orderBy === 'ASC'
+          ? a.Name.localeCompare(b.Name, undefined, { numeric: true })
+          : b.Name.localeCompare(a.Name, undefined, { numeric: true })
+      )
+    case 'TitleID':
+      return contents.sort((a, b) =>
+        FILTER_KEYWORDS.value.orderBy === 'ASC'
+          ? a['Title ID'].localeCompare(b['Title ID'], undefined, { numeric: true })
+          : b['Title ID'].localeCompare(a['Title ID'], undefined, { numeric: true })
+      )
+    case 'FileSize':
+      return contents.sort((a, b) =>
+        FILTER_KEYWORDS.value.orderBy === 'ASC'
+          ? Number(a['File Size']) - Number(b['File Size'])
+          : Number(b['File Size']) - Number(a['File Size'])
+      )
+  }
+}
 
 const items = computed(() => sortContents(filterByRegion(filterBySearchKeywords(ALL_CONTENTS.value))))
 

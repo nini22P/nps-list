@@ -52,12 +52,17 @@ const { FILTER_KEYWORDS } = storeToRefs(store)
           </div>
         </div>
 
-        <div class="flex flex-col justify-between">
-          <p class="px-1.5 text-sm text-right p-1">{{ $t('common.sort') }}</p>
+        <div class="flex flex-col justify-between gap-1">
+          <!-- <p class="px-1.5 text-sm text-right p-1">{{ $t('common.sort') }}</p> -->
           <select v-model="FILTER_KEYWORDS.sortBy">
             <option value="Date">{{ $t('common.date') }}</option>
             <option value="Name">{{ $t('common.title') }}</option>
+            <option value="TitleID">{{ $t('common.titleID') }}</option>
+            <option value="FileSize">{{ $t('common.fileSize') }}</option>
           </select>
+          <button @click="() => FILTER_KEYWORDS.orderBy = FILTER_KEYWORDS.orderBy === 'ASC' ? 'DESC' : 'ASC'">
+            {{ FILTER_KEYWORDS.orderBy === 'ASC' ? $t('common.asc') : $t('common.desc') }}
+          </button>
         </div>
 
       </div>
@@ -76,22 +81,26 @@ const { FILTER_KEYWORDS } = storeToRefs(store)
 }
 
 select {
-  @apply rounded p-1;
+  @apply rounded p-1 text-sm;
 }
 
 input[type="checkbox"] {
   display: none;
 }
 
+button,
 input[type="checkbox"]+label {
   @apply cursor-pointer px-1.5 py-0.5 rounded text-slate-200 text-sm;
 }
 
+button,
 input[type="checkbox"]:checked+label {
   @apply bg-cyan-600 text-white;
 }
 
 @media (any-hover: hover) {
+
+  button:hover,
   input[type="checkbox"]:hover+label {
     @apply bg-cyan-700;
   }

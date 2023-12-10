@@ -2,9 +2,13 @@ export const en = {
   common: {
     date: 'DATE',
     title: 'TITLE',
+    titleID: 'TITLE ID',
+    fileSize: 'File Size',
     download: 'Download',
     copy: 'Copy',
     sort: 'Sort',
+    asc: 'ASC',
+    desc: 'DESC',
   },
   nav: {
     browse: 'BROWSE',

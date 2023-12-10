@@ -2,9 +2,13 @@ export const zh_CN = {
   common: {
     date: '日期',
     title: '标题',
+    titleID: '标题ID',
+    fileSize: '文件大小',
     download: '下载',
     copy: '复制',
     sort: '排序',
+    asc: '正序',
+    desc: '倒序',
   },
   nav: {
     browse: '浏览',
